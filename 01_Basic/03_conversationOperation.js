@@ -26,5 +26,15 @@ let booleanIsLoggedIn = Boolean(isLoggedIn)
 let someValue = true//33
 let valueInString = String(someValue);
 
-console.log(valueInString);
-console.log(typeof valueInString);
+// console.log(valueInString);
+// console.log(typeof valueInString);
+
+// operation in conversations
+
+console.log("1"+1)
+console.log(1+"1")
+console.log("1"+1+1)        // output=111 
+console.log(1+1+"1")       // output=21     this we can say guidline or rule for it if first we got string value it convert in string then doing operation same as number
+
+console.log(+true)
+console.log(+"");  // same this 
