@@ -34,4 +34,5 @@ const user = [{id:1,email:'some1@mail.com'},
     {id:2,email:'some2@mail.com'},
     {id:3,email:'some3@mail.com'}
 ]       //this is another methode we recived multiple object in array
+
 console.log(user[1].email);

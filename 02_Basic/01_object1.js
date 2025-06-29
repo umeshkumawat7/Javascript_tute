@@ -28,4 +28,5 @@ jsUser.email="umesh@apple.com" //this value not aasign because object is freez
 jsUser.greeting = function(){
     console.log(`Hello User ${this.name}`) //this keyword refer same object so we don't write manual obj name
 }
+
 console.log(jsUser.greeting())
