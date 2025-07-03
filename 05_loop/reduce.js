@@ -37,3 +37,5 @@ const myShoppingCart = [
 const payAmount = myShoppingCart.reduce((startPrice, currentPrice)=>currentPrice.price + startPrice, 0)
 
 console.log(payAmount);
+
+//reduce is use three parameter first accumleter second is current value and third is starting point if given and fourth is acc base /first value 
