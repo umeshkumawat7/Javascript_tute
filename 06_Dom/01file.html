@@ -28,4 +28,50 @@
         </ul>
     </div>
 </body>
+<script>
+
+    //<---- using id manuplating DOM ---->
+
+    const head = document.getElementById('title')
+    console.log(head) // => <h1 id=​"title" class=​"heading">​…​</h1>​"DOM learning on Chai aur code "<span style=​"display:​ none;​">​test text​</span>​</h1>​
+    // to access the element by using ID
+    console.log(head.id); //=> 'title' to get title
+    
+    console.log(head.className) //=> 'heading' //to get className
+
+    // .getAttribute('selector') give the value/attribute-name of id,class given css selectors
+    document.getElementById('title').getAttribute('id') //=>'title' 
+
+    document.getElementById('title').getAttribute('class') //=> 'heading'
+
+    // .setAttribut('selector','value') change the value of selector or Over-Write it
+    document.getElementById('title').setAttribute('class','headBar')  //=> headBar /change class name
+
+    document.getElementById('title').setAttribute('id','head-title') //=>head-title / change title name 
+
+    // <----styling with id selector ---->
+    const headBar = document.getElementById('head-title')
+
+    headBar.style.backgroundColor='green' 
+
+    headBar.style.padding='15px'
+
+    headBar.style.borderRadius='15px'
+
+
+    // <---- extract textdata/content from element  ---->
+    headBar.innerText //=>  'DOM learning on Chai aur code'
+
+    headBar.textContent  //=> 'DOM learning on Chai aur code test text'
+
+    //difference in both innerText || textContent is innerText only give you display show data & textContent also give you hidden data in this case => <h1  id="title" class="heading">DOM learning on Chai aur code <span style="display: none;">test text</span></h1>
+    // it also show "test text"
+
+    headBar.textContent // => 'DOM learning on Chai aur code <span style="display: none;">test text</span>'
+    //it return whole element value 
+
+    // <---- querySelector ---->
+    
+
+</script>
 </html>
