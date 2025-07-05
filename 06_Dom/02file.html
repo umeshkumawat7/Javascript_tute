@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121;color: #f1f1f1;">
+    <ul>
+        <li class="list-item">one</li>
+        <li class="list-item">two</li>
+        <li class="list-item">three</li>
+        <li class="list-item">four</li>
+    </ul>
+</body>
+<script>
+    // access element parent to child
+    const myul = document.querySelector('ul')
+    const myli = document.querySelector('li')
+    console.log(myli) //=> <li class=​"list-item">​…​</li>​  //return first element
+
+    myli.style.color='green'
+    myli.style.padding = '10px'
+    myli.innerText = 'five'
+
+    //document.querySelectorAll => return all element by target selector
+    //syntx document.querySelectorAll(selector value)
+    const myliList = document.querySelectorAll('li')
+    //it return a nodeList it look like similer to array but not proper if we want to full control we convert in array
+    myliList[0] //=>return first element indexing starts from 0
+    //changing property of second element we doing this
+    myliList[1].style.backgroundColor='black'
+    myliList[1].style.color='orange'
+
+    //for apply in all element we use forEach
+    myliList.forEach((lis)=>lis.style.color='green')
+    
+    //class selector
+    // for targeting class and it's syntx- document.getElementsByClassName('className')
+    //it return a html-collection . So doing operation like array so we first convert into  array
+    const tempClassList = document.getElementsByClassName('list-item')
+
+    const classList = Array.from(tempClassList) //convert HTMLCollection into ARRY
+    classList.forEach((list)=>list.style.color="red")
+
+</script>
+</html>

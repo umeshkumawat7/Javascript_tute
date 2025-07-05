@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoM</title>
+</head>
+<body style="background-color: #212121;color: #f1f1f1;">
+    <ul id="lang" class="programming">
+        <li class="tech">python</li>
+        <li class="tech">java</li>
+        <li class="tech">go</li>
+        <li class="tech">cpp</li>
+        <li class="tech">rust</li>
+    </ul>
+</body>
+<script>
+    //accessing from parents to child element
+    const parent = document.querySelector('.programming')
+    parent.children //return HTMLCollection 
+    parent.children[1] //=> second element =>java
+    
+    //parent se firstchild and lastchild element target kr skte hai
+    console.log(parent.firstChild);
+    console.log(parent.lastChild)
+
+    //child se parent 
+    const language = document.querySelector('.tech')
+    language.parentElement //=><ul>...</ul>
+
+    language.nextElementSibling //=>return next sibling element
+
+    //nodes get krne ke liye
+    parent.childNodes // return a node child list
+
+    //for text value add/set 
+    parent.children[1].innerText='JavaScript' //overwrite value 
+
+    
+
+    //create new element
+    function addElement(element){
+        const listItem = document.createElement('li') //create element 
+        listItem.innerHTML = element   //set element value
+        document.querySelector('.programming') //target parent where we want to append
+        .appendChild(listItem)  //append element in our dom/parent 
+
+    }
+    addElement('Mojo')
+    addElement('Scala')
+    //add new element optimized approch
+    function addElementOptimized(element){
+        
+    }
+    
+</script>
+</html>
