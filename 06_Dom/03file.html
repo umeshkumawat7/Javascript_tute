@@ -50,8 +50,28 @@
     addElement('Scala')
     //add new element optimized approch
     function addElementOptimized(element){
-        
+        const listItem = document.createElement('li')
+        listItem.appendChild(document.createTextNode(element)) //this is optimized because we are no traversing the tree again //in innerHTML first we take value from dom tree then overwrite it
+        document.querySelector('.programming').appendChild(listItem)
     }
+    addElementOptimized('Ruby')
+
+
+    //edit element
+    const thirdChild = document.querySelector('li:nth-child(3)')
+    // console.log(thirdChild)
+    // thirdChild.innerHTML='Go Lang' worked but not optimized
+    const newItem = document.createElement('li')
+    newItem.textContent='Go-Lang'
+    thirdChild.replaceWith(newItem) //it replace our element //we use this because we have refrence where to change (thirdChild)
+
+    //another edit methode
+    const firstLang = document.querySelector('li:first-child') //targeting first child
+    //console.log(firstLang);
+    firstLang.outerHTML= '<li>TypeScript</li>' //in this method we pass whole element value including element
     
+    //remove
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove() //it remove last element ruby
 </script>
 </html>
