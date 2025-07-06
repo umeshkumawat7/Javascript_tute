@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    //first traditional method
+    //<li><img width="200px" id="japan" src="#" alt="" onclick="alert('image clicked')"></li> //its traditional methode but not scalable
+
+    //second method
+    // document.getElementById('owl').onclick = function(){
+    //     alert('owal clicked')
+    // }
+
+    //another methode
+    // attachEvent()   //old methode use in eraly time
+    // jQuery - on    // on methode direct use in jQuery
+    
+    //new / modernEventListener
+    // syntx .addEventListener('event',function(event-Object){},false)
+    //event => click,mouse,key,submit,dragand drop any type
+    //in function(){}we work using event object
+    //false is by default value we can change it for in term of eventPropagation
+
+    // document.getElementById('owl').addEventListener('click',function(){alert('owl is clicked')},false)
+
+    //mostley we dealing with browserEvent and envirinment-event(mousePosition , where mouse clicking)
+    //typeOfEvent => mouse,keyboard ,||timestamp=>date-time activity changing || defaultPrevented()=> change event behaviour like stop form submiting or anchor tag targeting
+
+    //target, toElement, srcElement, currentTarget
+    //client-position related => clientX, clientY, screenX, screenY
+    //altkey ,ctrlkey, shiftkey, keycode
+
+    //Event Propagation
+
+    // document.getElementById('images').addEventListener('click',function (e){
+    //     console.log(' clicking inside ul')
+    // },true)
+
+    // document.getElementById('owl').addEventListener('click',function (e){
+    //     console.log('li(owal) is clicking')
+    // },true)
+    //when we use false /bydefault step =>
+    //in this process when we click on owal img =>first: li(owal) is clicking then: ul is clicking means child to parent giving 
+    //we can say it #Event-Bubbling up means bubble goes down to top
+
+    //when we use true => means it change direction top to down  //we can say it #Event-capturing
+
+    //for stoping Event-Bubbling
+    document.getElementById('images').addEventListener('click',function (e){
+        //console.log(' clicking inside ul')
+    },false)
+
+    document.getElementById('owl').addEventListener('click',function (e){
+        //console.log('li(owal) is clicking')
+       // e.stopPropagation()
+    },false)
+    //e.stopPropagation() =>we can stop propagation =>li(owal) is clicking
+
+    //.preventDefault() => it stopIng behaviour now we stop 
+    document.getElementById('google').addEventListener('click',function(e){
+        //console.log('you click on google')
+        e.preventDefault()
+        //e.stopPropagation()
+    },false)
+
+    //remove element
+    //.target => target the element <img>...</img>
+    //.target.id =>return id name
+    //target.parentNode => return a parentnode <li>...</li>
+    //.target.tagName=> return a tagname =>UL,IMG
+    document.querySelector('#images').addEventListener('click',function(e){
+        //  const removeItem = e.target.parentNode
+        //  console.log(e.target.tagName);
+         
+        //  removeItem.remove()
+        //in this case when we click <li> tag dot(.) so its parent tag ul also deleted also deleted & click on google is also deleted
+
+        if(e.target.tagName=='IMG'){
+            const removeItem = e.target.parentNode
+            removeItem.remove()
+        }
+        //alternet remove methode=> removeItem.parentNode.removeChild(removeItem)
+    },false)
+</script>
+</html>
