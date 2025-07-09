@@ -17,10 +17,10 @@
         document.querySelector('h1').innerHTML = "best JS series"
     }
 
-    const changeMe = setTimeout(changeText, 2000)
+    const changeMe = setTimeout(changeText, 2000) //setTimeout is executing after given time  . It send into task-queue for executing   
 
     document.querySelector('#stop').addEventListener('click', function(){
-        clearTimeout(changeMe)
+        clearTimeout(changeMe) // clearTimeout use for => to cancel timer to set up by previously setTimeout
         console.log("STOPPED")
     })
 </script>
