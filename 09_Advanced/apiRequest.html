@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Bio</title>
+</head>
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+
+      background: linear-gradient(120deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(9, 9, 121, 1) 35%,
+        rgba(0, 212, 255, 1) 100%
+      );
+
+      background-size: 300% 300%;
+      animation: gradientFlow 10s ease infinite;
+
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .card {
+      width: 350px;
+      padding: 2rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    img{
+        width: 250px;
+        border-radius: 20px;
+    }
+    img:hover{
+        transform: scale(1.04);
+        transition: ease-in-out 0.5s;
+        box-shadow: 0 0 15px rgb(41, 40, 40);
+    }
+
+</style>
+<body>
+    <div class="card">
+        <img src="" alt="github img">
+        <h2>name</h2>
+        <p id="location">Location</p>
+        <p id="repo">public_repos</p>
+        <p id="since">since</p>
+    </div>
+</body>
+<script>
+   
+    const requestUrl = 'https://api.github.com/users/umeshkumawat7'
+
+    const xhr = new XMLHttpRequest(); //creating an XHR object to send a network request to a server.
+    xhr.open('GET', requestUrl) //
+    //console.log(xhr.readyState)
+    const data = xhr.onreadystatechange = function(){
+        //console.log(xhr.readyState)
+        if(xhr.readyState==4){
+        const data = JSON.parse(this.responseText)
+        //console.log(data.avatar_url,data.location, data.public_repos)
+        //console.log(data.created_at.substring(0,10))
+        document.querySelector('img').src = data.avatar_url
+        document.querySelector('h2').innerText =  data.name
+        document.querySelector('#location').innerHTML ='Location📍: ' +data.location
+        document.querySelector('#repo').innerHTML = 'Repo📦: '+data.public_repos
+        document.querySelector('#since').innerHTML ='Since📅: '+ data.created_at.substring(0,10)
+
+        }
+    }
+    xhr.send()
+
+
+    
+</script>
+</html>
