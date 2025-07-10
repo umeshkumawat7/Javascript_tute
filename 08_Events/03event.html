@@ -15,8 +15,13 @@
         console.log(str, Date.now());
     }
 
-    const intervalId = setInterval(sayDate, 1000, "hi")
-
-    clearInterval(intervalId)
+    let intervalId;
+     document.querySelector('#start').addEventListener('click',function(){
+        intervalId = setInterval(sayDate, 1000, "hello")//Runs a function repeatedly at a fixed time interval (in milliseconds).
+     })
+     document.querySelector('#stop').addEventListener('click',function(){
+        clearInterval(intervalId) //Stops a repeated function started with setInterval.
+     })
+    
 </script>
 </html>
