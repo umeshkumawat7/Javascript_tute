@@ -66,14 +66,28 @@
     </div>
 </body>
 <script>
-   
+   //XMLHttpRequest (often abbreviated as XHR) is a built-in browser object that allows you to make HTTP requests to web servers and receive their responses programmatically using JavaScript. It's the foundational technology behind AJAX (Asynchronous JavaScript and XML).
     const requestUrl = 'https://api.github.com/users/umeshkumawat7'
 
-    const xhr = new XMLHttpRequest(); //creating an XHR object to send a network request to a server.
-    xhr.open('GET', requestUrl) //
-    //console.log(xhr.readyState)
+    const xhr = new XMLHttpRequest(); //creating an XHR object to send a network request to a server. Create an XMLHttpRequest object.
+
+    xhr.open('GET', requestUrl) // You specify the HTTP method (e.g., GET, POST, PUT, DELETE), the URL.
+    //console.log(xhr.readyState) 
+
+
+    //onreadystatechange:=> A function that is called whenever the readyState attribute changes.
+//  0 (UNSENT): Client has been created. open() not called yet.
+// 1 (OPENED): open() has been called.
+// 2 (HEADERS_RECEIVED): send() has been called, and headers and status are available.
+// 3 (LOADING): Downloading; responseText holds partial data.
+// 4 (DONE): The operation is complete
+
+//You also typically check xhr.status for the HTTP status code (e.g., 200 for success, 404 for not found, 500 for server error).
+
+
     const data = xhr.onreadystatechange = function(){
-        //console.log(xhr.readyState)
+        
+        //console.log(xhr.readyState) //it give you 1,2,3,4 value
         if(xhr.readyState==4){
         const data = JSON.parse(this.responseText)
         //console.log(data.avatar_url,data.location, data.public_repos)
