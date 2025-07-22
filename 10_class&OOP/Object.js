@@ -6,7 +6,7 @@ function multipleBy5(num){
 multipleBy5.power = 2
 
 console.log(multipleBy5(5));
-console.log(multipleBy5.power);
+console.log(multipleBy5.power); //function also a object
 console.log(multipleBy5.prototype);
 
 function createUser(username, score){
