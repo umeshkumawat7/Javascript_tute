@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+    <button id="green">Green</button>
+    <button id="orange">Orange</button>
+
+    <h1>A closure is formed when an inner function "remembers" the variables of its outer function, even after the outer function has finished executing.
+
+    🔐 Think of it like:
+    A function + its surrounding scope = Closure</h1>
+</body>
+<script>
+    function init() {
+        let name = "Mozilla"; 
+        function displayName() {
+            console.log(name); 
+        }
+        displayName();
+    }
+    init();
+
+    function Outer(){
+        let name = 'Umesh'
+        function inner(){
+            console.log(`Hello ${name}`);
+        }
+        return inner
+    }
+    
+     const closureFunc = Outer()
+     closureFunc()  //  Hello Umesh   
+     //after execution finished of outer function it also return their lexical scope and also share the memory of it so we can acces the value of name because we have access of their lexical scope
+</script>
+
+<script>
+    function clickHandler(color){
+        //document.body.style.backgroundColor = `${color}`
+        return function() {
+           document.body.style.backgroundColor = `${color}` //after clickHandler execution it return a function we execution afer when we required color so we have access of it
+        }
+    }
+
+    document.getElementById('green').onclick = clickHandler('green')
+    document.getElementById('orange').onclick = clickHandler('orange')
+</script>
+</html>
